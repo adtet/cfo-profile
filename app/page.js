@@ -13,7 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     const options = {
-      strings: [" Chief Financial Officer", " Entrepreneur"],
+      strings: [" Chief Financial Officer", " Entrepreneur","Financial Planner","Motivator","Financial Consultant"],
       typeSpeed: 50,
       backSpeed: 50,
       loop: true,
