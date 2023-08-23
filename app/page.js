@@ -1,95 +1,148 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+import { useState, useRef, useEffect } from "react";
+
+import About from "./pages/about";
+import Resume from "./pages/resume";
+import Typed from "typed.js";
 
 export default function Home() {
+  // Create reference to store the DOM element containing the animation
+  const el = useRef(null);
+  // Create reference to store the Typed instance itself
+  // const typed = useRef(null);
+
+  useEffect(() => {
+    const options = {
+      strings: [" Chief Financial Officer", " Entrepreneur"],
+      typeSpeed: 50,
+      backSpeed: 50,
+      loop: true,
+    };
+
+    const typed = new Typed(el.current, options);
+
+    return () => {
+      typed.destroy();
+
+    };
+  }, []);
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+    <>
+      <i className="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+      <header id="header">
+        <div className="d-flex flex-column">
+          <div className="profile">
+            <img
+              src="/assets/img/profile.png"
+              className="img-fluid rounded-circle"
             />
-          </a>
+            <h1 className="text-light">
+              <a href="index.html">ADS</a>
+            </h1>
+            <div class="social-links mt-3 text-center">
+              <a href="#" class="twitter">
+                <i class="bx bxl-twitter"></i>
+              </a>
+              <a href="#" class="facebook">
+                <i class="bx bxl-facebook"></i>
+              </a>
+              <a href="#" class="instagram">
+                <i class="bx bxl-instagram"></i>
+              </a>
+              <a href="#" class="google-plus">
+                <i class="bx bxl-skype"></i>
+              </a>
+              <a href="#" class="linkedin">
+                <i class="bx bxl-linkedin"></i>
+              </a>
+            </div>
+          </div>
+
+          <nav id="navbar" className="nav-menu navbar">
+            <ul>
+              <li>
+                <a href="#hero" className="nav-link scrollto active">
+                  <i className="bx bx-home"></i> <span>Home</span>
+                </a>
+              </li>
+              <li>
+                <a href="#about" className="nav-link scrollto">
+                  <i className="bx bx-user"></i> <span>About</span>
+                </a>
+              </li>
+              <li>
+                <a href="#resume" className="nav-link scrollto">
+                  <i className="bx bx-file-blank"></i> <span>Resume</span>
+                </a>
+              </li>
+              {/* <li>
+                <a href="#portfolio" className="nav-link scrollto">
+                  <i className="bx bx-book-content"></i> <span>Portfolio</span>
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="nav-link scrollto">
+                  <i className="bx bx-server"></i> <span>Services</span>
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="nav-link scrollto">
+                  <i className="bx bx-envelope"></i> <span>Contact</span>
+                </a>
+              </li> */}
+            </ul>
+          </nav>
         </div>
-      </div>
+      </header>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
+      <section
+        id="hero"
+        className="d-flex flex-column justify-content-center align-items-center"
+      >
+        <div className="hero-container" data-aos="fade-in">
+          <h1>Akhmad Dody</h1>
+          <h1>Setiawan</h1>
           <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+            I`m&nbsp;
+            <span
+              // className="typed"
+              // data-typed-items="Designer, Developer, Freelancer, Photographer"
+              ref={el}
+            ></span>
+            <p></p>
           </p>
-        </a>
-      </div>
-    </main>
-  )
+        </div>
+      </section>
+
+      <main id="main">
+        <About />
+        <Resume />
+      </main>
+
+      <script
+        defer
+        src="/assets/vendor/purecounter/purecounter_vanilla.js"
+      ></script>
+      <script defer src="/assets/vendor/aos/aos.js"></script>
+      <script
+        defer
+        src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"
+      ></script>
+      <script defer src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+      <script
+        defer
+        src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"
+      ></script>
+      <script defer src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+      <script defer src="/assets/vendor/typed.js/typed.umd.js"></script>
+      <script
+        defer
+        src="/assets/vendor/waypoints/noframework.waypoints.js"
+      ></script>
+      <script defer src="/assets/vendor/php-email-form/validate.js"></script>
+
+      <script defer src="/assets/js/main.js"></script>
+    </>
+  );
 }
